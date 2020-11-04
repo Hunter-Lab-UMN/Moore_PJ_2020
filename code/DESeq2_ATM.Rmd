@@ -191,8 +191,8 @@ makeMA_05 <- function(x){
                 palette = alpha(c("limegreen", "firebrick2", "gray50"),0.35),
                 genenames = as.vector(x$symbol),
                 legend = "top", 
-                top = 0,
-                select.top.method	= "padj",
+                top = 20,
+                select.top.method	= "fc",
                 font.label = c(10, "bold", "black"),
                 font.legend = "bold",
                 font.main = "bold",
@@ -209,8 +209,8 @@ makeMA_01 <- function(x){
                 palette = alpha(c("limegreen", "firebrick2", "gray50"),0.35),
                 genenames = as.vector(x$symbol),
                 legend = "top", 
-                top = 0,
-                select.top.method	= "padj",
+                top = 20,
+                select.top.method	= "fc",
                 font.label = c(10, "bold", "black"),
                 font.legend = "bold",
                 font.main = "bold",
@@ -219,16 +219,16 @@ makeMA_01 <- function(x){
 }
 ```  
 
-The plot settings in set by this function are to draw the LFC line at 1, and only color/label those points which are greater than Log2fc of 1 and an adjusted p-value less than .001.  
 
-## Plots for aerobic vs anaerobic
+
+## Plots for anaerobic vs aerobic
 ```{r}
 maPlotATM_05 <- makeMA_05(resATM_df) + ggtitle("Anaerobic vs Aerobic (ref)") +theme(
     legend.text = element_text(size=rel(0.9)),  
     legend.title = element_blank(),
     legend.position = "top") +
   guides(colour = guide_legend(override.aes = list(alpha=0.5, size=3))) +
-  scale_colour_manual(values = alpha(c("limegreen", "firebrick2", "gray60"),0.5), labels = c("Upregulated (262)", "Downregulated (104)", "NS (15,873)"))
+  scale_colour_manual(values = alpha(c("limegreen", "firebrick2", "gray60"),0.5), labels = c("Upregulated (262)", "Downregulated (104)", "NS"))
 
 maPlotATM_05
 ggsave(plot = maPlotATM_05, filename = "../figures/anaVSaer/maPlotATM_aerREF_05.pdf", device = "pdf", height = 5, width = 6)
@@ -238,30 +238,13 @@ maPlotATM_01 <- makeMA_01(resATM_df) + ggtitle("Anaerobic vs Aerobic (ref)") +th
     legend.title = element_blank(),
     legend.position = "top") +
   guides(colour = guide_legend(override.aes = list(alpha=0.5, size=3))) +
-  scale_colour_manual(values = alpha(c("limegreen", "firebrick2", "gray60"),0.5), labels = c("Upregulated (204)", "Downregulated (72)", "NS (15,963)"))
+  scale_colour_manual(values = alpha(c("limegreen", "firebrick2", "gray60"),0.5), labels = c("Upregulated (204)", "Downregulated (72)", "NS"))
 maPlotATM_01
 ggsave(plot = maPlotATM_01, filename = "../figures/anaVSaer/maPlotATM_aerREF_01.pdf", device = "pdf", height = 4, width = 6)
 ```  
 
-We can look at these two genes by using the plotCounts function: 
 
-```{r}
-# Find the ensemble id (ensgene) for LDHA in the resATM_df file
-HIF1A <- "ENSG00000100644"
-# Save plotcounts to a data frame object
-HIF1A <- plotCounts(dds, gene=HIF1A, intgroup="TEST", returnData=TRUE)
-# Plotting the LDHA normalized counts, using the samplenames (rownames of plot as labels)
-ggplot(HIF1A, aes(x = TEST, y = count, color = TEST)) + 
-  geom_boxplot() +
-  geom_point(position=position_jitter(w = 0.1,h = 0)) +
-  scale_color_manual(limits = c("aerobic", "anaerobic", "anaerobic_CRS"), 
-                     values = wes_palette(n=3, name="Darjeeling1")) +
-  geom_text_repel(aes(label = rownames(HIF1Am))) + 
-  ggtitle("HIF1A") +
-  theme(plot.title = element_text(hjust = 0.5))
-```
-
-
+#Gene Count Plots
 Let's create tibble objects from the meta and normalized_counts data frames before we start plotting. This will enable us to use the tidyverse functionality more easily.
 
 ```{r}
@@ -459,7 +442,7 @@ ggsave(mucin_plot, filename = "../figures/anaVSaer/mucin_norm.pdf", device = "pd
 ggsave(HIF1A_plot, filename = "../figures/anaVSaer/HIF1A_norm.pdf", device = "pdf", height = 4, width =6)
 ```
 
-VOLCANO PLOTS
+#Volcano Plots
 ```{r}
 library(EnhancedVolcano)
 ```
