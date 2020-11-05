@@ -217,6 +217,23 @@ makeMA_01 <- function(x){
                 ggtheme = ggplot2::theme_minimal())
   p
 }
+makeMA_001 <- function(x){
+  p <- ggmaplot(x, 
+                #fc of 2 corresponds to the log2fc of 1 we tested in our hyp. in the results command
+                fdr = 0.001, 
+                fc = 2, 
+                size = 1, 
+                palette = alpha(c("limegreen", "firebrick2", "gray50"),0.35),
+                genenames = as.vector(x$symbol),
+                legend = "top", 
+                top = 20,
+                select.top.method	= "fc",
+                font.label = c(10, "bold", "black"),
+                font.legend = "bold",
+                font.main = "bold",
+                ggtheme = ggplot2::theme_minimal())
+  p
+}
 ```  
 
 
@@ -241,6 +258,15 @@ maPlotATM_01 <- makeMA_01(resATM_df) + ggtitle("Anaerobic vs Aerobic (ref)") +th
   scale_colour_manual(values = alpha(c("limegreen", "firebrick2", "gray60"),0.5), labels = c("Upregulated (204)", "Downregulated (72)", "NS"))
 maPlotATM_01
 ggsave(plot = maPlotATM_01, filename = "../figures/anaVSaer/maPlotATM_aerREF_01.pdf", device = "pdf", height = 4, width = 6)
+
+maPlotATM_001 <- makeMA_001(resATM_df) + ggtitle("Anaerobic vs Aerobic (ref)") +theme(
+    legend.text = element_text(size=rel(0.9)),  
+    legend.title = element_blank(),
+    legend.position = "top") +
+  guides(colour = guide_legend(override.aes = list(alpha=0.5, size=3))) +
+  scale_colour_manual(values = alpha(c("limegreen", "firebrick2", "gray60"),0.5), labels = c("Upregulated (117)", "Downregulated (31)", "NS"))
+maPlotATM_001
+ggsave(plot = maPlotATM_001, filename = "../figures/anaVSaer/maPlotATM_aerREF_001.pdf", device = "pdf", height = 4, width = 6)
 ```  
 
 
@@ -497,8 +523,34 @@ volcano_atm_05
 ```
 
 ```{r}
+volcano_atm_001 <- EnhancedVolcano(resATM_df,
+                lab = resATM_df$symbol,
+                x = 'log2FoldChange',
+                y= 'pvalue',
+                xlim = c(-5,5),
+                title = "Anaerobic vs Aerobic",
+                subtitle = "",
+                caption = "",
+                hlineCol = 'black',
+                vlineCol = 'black',
+                colAlpha = 4/5,
+                FCcutoff = 1,
+                pCutoff = 0.001,
+                pointSize = 1.5,
+                labCol = 'black',
+                cutoffLineCol = 'black',
+                border = "full",
+                col = c("grey30", "#EEC537", "#8AC1BE", "#D7462E"),
+                legendPosition = 'none'
+            )
+volcano_atm_001
+```
+
+```{r}
 ggsave(volcano_atm_01, filename = "../figures/anaVSaer/volcano_atm_01.pdf", device = "pdf", height = 6, width = 6)
 ggsave(volcano_atm_05, filename = "../figures/anaVSaer/volcano_atm_05.pdf", device = "pdf", height = 6, width = 6)
+ggsave(volcano_atm_001, filename = "../figures/anaVSaer/volcano_atm_001.pdf", device = "pdf", height = 6, width = 6)
+
 ```
 
 
@@ -619,10 +671,41 @@ volcano_ATM_group_01 <- EnhancedVolcano(res_dfATMvolcanogenes,
                 )
 volcano_ATM_group_01
 ```
-
+```{r}
+volcano_ATM_group_001 <- EnhancedVolcano(res_dfATMvolcanogenes,
+                lab = res_dfATMvolcanogenes$siggenes,
+                labSize = 3.5,
+                boxedLabels = FALSE,
+                drawConnectors = TRUE,
+                widthConnectors = 0.05,
+                colConnectors = "grey30",
+                typeConnectors = "closed",
+                endsConnectors = "first",
+                lengthConnectors = unit(10e-5, 'npc'),
+                x = 'log2FoldChange',
+                y = 'padj',
+                xlim = c(-4,4),
+                title = NULL,
+                subtitle = "",
+                caption = "",
+                colCustom = keyvals.colorATM,
+                hlineCol = 'black',
+                vlineCol = 'black',
+                colAlpha = 0.5,
+                pointSize = 3,
+                FCcutoff = 1,
+                pCutoff = 0.001,
+                labCol = 'black',
+                cutoffLineCol = 'black',
+                border = "full",
+                legendPosition = "none"
+                )
+volcano_ATM_group_001
+```
 ```{r}
 ggsave(volcano_ATM_group_01, filename = "../figures/anaVSaer/volcano_atm_group_01.pdf", device = "pdf", height = 6, width = 6)
 ggsave(volcano_ATM_group_05, filename = "../figures/anaVSaer/volcano_atm_group_05.pdf", device = "pdf", height = 6, width = 6)
+ggsave(volcano_ATM_group_001, filename = "../figures/anaVSaer/volcano_atm_group_001.pdf", device = "pdf", height = 6, width = 6)
 ```
 
 ```{r}
