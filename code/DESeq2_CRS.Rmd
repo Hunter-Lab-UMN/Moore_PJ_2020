@@ -197,6 +197,7 @@ maPlotCRS_05 <- makeMA_05(resCRS_df) + ggtitle("CRS vs Anaerobic (ref)") +theme(
 
 maPlotCRS_05
 ggsave(plot = maPlotCRS_05, filename = "../figures/crsVSana/maPlotCRS_anaREF_05.pdf", device = "pdf", height = 5, width = 6)
+ggsave(plot = maPlotCRS_05, filename = "../figures/crsVSana/maPlotCRS_anaREF_05.png", device = "png", height = 5, width = 6)
 
 
 maPlotCRS_01 <- makeMA_01(resCRS_df) + ggtitle("CRS vs Anaerobic (ref)") +theme(
@@ -208,6 +209,7 @@ maPlotCRS_01 <- makeMA_01(resCRS_df) + ggtitle("CRS vs Anaerobic (ref)") +theme(
   
 maPlotCRS_01
 ggsave(plot = maPlotCRS_01, filename = "../figures/crsVSana/maPlotCRS_anaREF_01.pdf", device = "pdf", height = 4, width = 6)
+ggsave(plot = maPlotCRS_01, filename = "../figures/crsVSana/maPlotCRS_anaREF_01.png", device = "png", height = 4, width = 6)
 
 maPlotCRS_001 <- makeMA_001(resCRS_df) + ggtitle("CRS vs Anaerobic (ref) 001") +theme(
     legend.text = element_text(size=rel(0.9)),  
@@ -218,6 +220,7 @@ maPlotCRS_001 <- makeMA_001(resCRS_df) + ggtitle("CRS vs Anaerobic (ref) 001") +
   
 maPlotCRS_001
 ggsave(plot = maPlotCRS_001, filename = "../figures/crsVSana/maPlotCRS_anaREF_001.pdf", device = "pdf", height = 4, width = 6)
+ggsave(plot = maPlotCRS_001, filename = "../figures/crsVSana/maPlotCRS_anaREF_001.png", device = "png", height = 4, width = 6)
 ```   
 
 
@@ -374,8 +377,15 @@ mucin_plot
 ggsave(cyto_plot, filename = "../figures/crsVSana/cytokine_norm.pdf", device = "pdf", height = 4, width = 6)
 ggsave(mucin_plot, filename = "../figures/crsVSana/mucin_norm.pdf", device = "pdf", height = 4, width = 6)
 ```
+```{r}
+ggsave(cyto_plot, filename = "../figures/crsVSana/cytokine_norm.png", device = "png", height = 4, width = 6)
+ggsave(mucin_plot, filename = "../figures/crsVSana/mucin_norm.png", device = "png", height = 4, width = 6)
+```
 
-
+```{r}
+write_csv(gathered_cyto_crs, "../results/CytoNormCount_crsVSanaerobic.csv")
+write_csv(gathered_mucin_crs, "../results/MucinNormCount_crsVSanaerobic.csv")
+```
 #Volcano Plots
 ```{r}
 library(EnhancedVolcano)
@@ -457,7 +467,11 @@ ggsave(volcano_crs_01, filename = "../figures/crsVSana/volcano_crs_01.pdf", devi
 ggsave(volcano_crs_05, filename = "../figures/crsVSana/volcano_crs_05.pdf", device = "pdf", height = 6, width = 6)
 ggsave(volcano_crs_001, filename = "../figures/crsVSana/volcano_crs_001.pdf", device = "pdf", height = 6, width = 6)
 ```
-
+```{r}
+ggsave(volcano_crs_01, filename = "../figures/crsVSana/volcano_crs_01.png", device = "png", height = 6, width = 6)
+ggsave(volcano_crs_05, filename = "../figures/crsVSana/volcano_crs_05.png", device = "png", height = 6, width = 6)
+ggsave(volcano_crs_001, filename = "../figures/crsVSana/volcano_crs_001.png", device = "png", height = 6, width = 6)
+```
 
 Now we want to color the dots in the volcano plot by certain gene groups, first we specify the gene groups
 ```{r}
@@ -613,7 +627,11 @@ ggsave(volcano_CRS_group_01, filename = "../figures/crsVSana/volcano_CRS_group_0
 ggsave(volcano_CRS_group_05, filename = "../figures/crsVSana/volcano_CRS_group_05.pdf", device = "pdf", height = 6, width = 6)
 ggsave(volcano_CRS_group_001, filename = "../figures/crsVSana/volcano_CRS_group_001.pdf", device = "pdf", height = 6, width = 6)
 ```
-
+```{r}
+ggsave(volcano_CRS_group_01, filename = "../figures/crsVSana/volcano_CRS_group_01.png", device = "png", height = 6, width = 6)
+ggsave(volcano_CRS_group_05, filename = "../figures/crsVSana/volcano_CRS_group_05.png", device = "png", height = 6, width = 6)
+ggsave(volcano_CRS_group_001, filename = "../figures/crsVSana/volcano_CRS_group_001.png", device = "png", height = 6, width = 6)
+```
 
 ```{r}
 sessionInfo()

@@ -249,6 +249,7 @@ maPlotATM_05 <- makeMA_05(resATM_df) + ggtitle("Anaerobic vs Aerobic (ref)") +th
 
 maPlotATM_05
 ggsave(plot = maPlotATM_05, filename = "../figures/anaVSaer/maPlotATM_aerREF_05.pdf", device = "pdf", height = 5, width = 6)
+ggsave(plot = maPlotATM_05, filename = "../figures/anaVSaer/maPlotATM_aerREF_05.png", device = "png", height = 5, width = 6)
 
 maPlotATM_01 <- makeMA_01(resATM_df) + ggtitle("Anaerobic vs Aerobic (ref)") +theme(
     legend.text = element_text(size=rel(0.9)),  
@@ -258,6 +259,7 @@ maPlotATM_01 <- makeMA_01(resATM_df) + ggtitle("Anaerobic vs Aerobic (ref)") +th
   scale_colour_manual(values = alpha(c("limegreen", "firebrick2", "gray60"),0.5), labels = c("Upregulated (204)", "Downregulated (72)", "NS"))
 maPlotATM_01
 ggsave(plot = maPlotATM_01, filename = "../figures/anaVSaer/maPlotATM_aerREF_01.pdf", device = "pdf", height = 4, width = 6)
+ggsave(plot = maPlotATM_01, filename = "../figures/anaVSaer/maPlotATM_aerREF_01.png", device = "png", height = 4, width = 6)
 
 maPlotATM_001 <- makeMA_001(resATM_df) + ggtitle("Anaerobic vs Aerobic (ref)") +theme(
     legend.text = element_text(size=rel(0.9)),  
@@ -267,6 +269,7 @@ maPlotATM_001 <- makeMA_001(resATM_df) + ggtitle("Anaerobic vs Aerobic (ref)") +
   scale_colour_manual(values = alpha(c("limegreen", "firebrick2", "gray60"),0.5), labels = c("Upregulated (117)", "Downregulated (31)", "NS"))
 maPlotATM_001
 ggsave(plot = maPlotATM_001, filename = "../figures/anaVSaer/maPlotATM_aerREF_001.pdf", device = "pdf", height = 4, width = 6)
+ggsave(plot = maPlotATM_001, filename = "../figures/anaVSaer/maPlotATM_aerREF_001.png", device = "png", height = 4, width = 6)
 ```  
 
 
@@ -467,6 +470,18 @@ ggsave(cyto_plot, filename = "../figures/anaVSaer/cytokine_norm.pdf", device = "
 ggsave(mucin_plot, filename = "../figures/anaVSaer/mucin_norm.pdf", device = "pdf", height = 4, width = 6)
 ggsave(HIF1A_plot, filename = "../figures/anaVSaer/HIF1A_norm.pdf", device = "pdf", height = 4, width =6)
 ```
+```{r}
+ggsave(cyto_plot, filename = "../figures/anaVSaer/cytokine_norm.png", device = "png", height = 4, width = 6)
+ggsave(mucin_plot, filename = "../figures/anaVSaer/mucin_norm.png", device = "png", height = 4, width = 6)
+ggsave(HIF1A_plot, filename = "../figures/anaVSaer/HIF1A_norm.png", device = "png", height = 4, width =6)
+```
+
+```{r}
+write_csv(gathered_cyto_atm, "../results/CytoNormCount_anaerobicVSaerobic.csv")
+write_csv(gathered_mucin_atm, "../results/MucinNormCount_anaerobicVSaerobic.csv")
+write_csv(gathered_hif1a_atm, "../results/Hif1aNormCount_anaerobicVSaerobic.csv")
+```
+
 
 #Volcano Plots
 ```{r}
@@ -550,6 +565,12 @@ volcano_atm_001
 ggsave(volcano_atm_01, filename = "../figures/anaVSaer/volcano_atm_01.pdf", device = "pdf", height = 6, width = 6)
 ggsave(volcano_atm_05, filename = "../figures/anaVSaer/volcano_atm_05.pdf", device = "pdf", height = 6, width = 6)
 ggsave(volcano_atm_001, filename = "../figures/anaVSaer/volcano_atm_001.pdf", device = "pdf", height = 6, width = 6)
+
+```
+```{r}
+ggsave(volcano_atm_01, filename = "../figures/anaVSaer/volcano_atm_01.png", device = "png", height = 6, width = 6)
+ggsave(volcano_atm_05, filename = "../figures/anaVSaer/volcano_atm_05.png", device = "png", height = 6, width = 6)
+ggsave(volcano_atm_001, filename = "../figures/anaVSaer/volcano_atm_001.png", device = "png", height = 6, width = 6)
 
 ```
 
@@ -706,6 +727,11 @@ volcano_ATM_group_001
 ggsave(volcano_ATM_group_01, filename = "../figures/anaVSaer/volcano_atm_group_01.pdf", device = "pdf", height = 6, width = 6)
 ggsave(volcano_ATM_group_05, filename = "../figures/anaVSaer/volcano_atm_group_05.pdf", device = "pdf", height = 6, width = 6)
 ggsave(volcano_ATM_group_001, filename = "../figures/anaVSaer/volcano_atm_group_001.pdf", device = "pdf", height = 6, width = 6)
+```
+```{r}
+ggsave(volcano_ATM_group_01, filename = "../figures/anaVSaer/volcano_atm_group_01.png", device = "png", height = 6, width = 6)
+ggsave(volcano_ATM_group_05, filename = "../figures/anaVSaer/volcano_atm_group_05.png", device = "png", height = 6, width = 6)
+ggsave(volcano_ATM_group_001, filename = "../figures/anaVSaer/volcano_atm_group_001.png", device = "png", height = 6, width = 6)
 ```
 
 ```{r}
