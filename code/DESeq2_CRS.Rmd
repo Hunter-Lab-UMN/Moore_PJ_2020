@@ -373,6 +373,102 @@ mucin_plot <- GroupGeneCountsBox(gathered_mucin_crs) + ggtitle("Mucin Genes")
 mucin_plot
 ```
 
+Plot the normalized count values for LDHA
+
+To do this, we first need to list the gene names of interest, then extract normalized count values for those genes.
+```{r}
+#list genes of interest
+LDHA <- "ENSG00000134333"
+#normailized counts for those mucin genes
+ldha_crs_norm <- normalized_resCRS %>%
+  filter (gene %in% LDHA)
+```
+
+Now that we have the normalized counts for each of the genes for all samples, to plot using ggplot(), we need to gather the counts for all samples into a single column to allow us to give ggplot the one column with the values we want it to plot.
+
+The gather() function in the tidyr package will perform this operation and will output the normalized counts for all genes for the first sample listed in the first 11 rows, followed by the normalized counts for second sample in the next 11 rows, so on and so forth.
+
+```{r}
+# Gathering the columns to have normalized counts to a single column
+gathered_ldha_crs <- ldha_crs_norm %>%
+  gather(colnames(ldha_crs_norm)[2:12], key = "SAMPLE_NAME", value = "normalized_counts")
+
+## check the column header in the "gathered" data frame
+head(gathered_ldha_crs)
+```
+
+Now, if we want our counts colored by sample group, then we need to combine the metadata information with the melted normalized counts data into the same data frame for input to ggplot():
+```{r}
+gathered_ldha_crs <- inner_join(DE_meta, gathered_ldha_crs, by = c("SAMPLE_NAME" = "SAMPLE_NAME"))
+```
+The inner_join() will merge 2 data frames with respect to the "SAMPLE_NAME" column, i.e. a column with the same column name in both data frames.
+
+Now that we have a data frame in a format that can be utilised by ggplot easily, let's plot!
+
+```{r}
+## plot using GroupGeneCount function
+ldha_plot <- GroupGeneCountsBox(gathered_ldha_crs) + ggtitle("LDHA")
+ldha_plot
+```
+
+
+
+Plot the normalized count values for HIF1A
+
+To do this, we first need to list the gene names of interest, then extract normalized count values for those genes.
+```{r}
+#list genes of interest
+HIF1A <- "ENSG00000100644"
+#normailized counts for those mucin genes
+hif1a_crs_norm <- normalized_resCRS %>%
+  filter (gene %in% HIF1A)
+```
+
+Now that we have the normalized counts for each of the genes for all samples, to plot using ggplot(), we need to gather the counts for all samples into a single column to allow us to give ggplot the one column with the values we want it to plot.
+
+The gather() function in the tidyr package will perform this operation and will output the normalized counts for all genes for the first sample listed in the first 11 rows, followed by the normalized counts for second sample in the next 11 rows, so on and so forth.
+
+```{r}
+# Gathering the columns to have normalized counts to a single column
+gathered_hif1a_crs <- hif1a_crs_norm %>%
+  gather(colnames(hif1a_crs_norm)[2:12], key = "SAMPLE_NAME", value = "normalized_counts")
+
+## check the column header in the "gathered" data frame
+head(gathered_hif1a_crs)
+```
+
+Now, if we want our counts colored by sample group, then we need to combine the metadata information with the melted normalized counts data into the same data frame for input to ggplot():
+```{r}
+gathered_hif1a_crs <- inner_join(DE_meta, gathered_hif1a_crs, by = c("SAMPLE_NAME" = "SAMPLE_NAME"))
+```
+The inner_join() will merge 2 data frames with respect to the "SAMPLE_NAME" column, i.e. a column with the same column name in both data frames.
+
+Now that we have a data frame in a format that can be utilised by ggplot easily, let's plot!
+
+```{r}
+## plot using GroupGeneCount function
+HIF1A_plot <- GroupGeneCountsBox(gathered_hif1a_crs) + ggtitle("HIF1A")
+HIF1A_plot
+```
+
+
+```{r}
+
+ggsave(HIF1A_plot, filename = "../figures/crsVSana/HIF1A_norm.pdf", device = "pdf", height = 4, width =6)
+
+ggsave(HIF1A_plot, filename = "../figures/crsVSana/HIF1A_norm.png", device = "png", height = 4, width =6)
+
+write_csv(gathered_hif1a_crs, "../results/Hif1aNormCount_crsVSanaerobic.csv")
+```
+
+```{r}
+
+ggsave(ldha_plot, filename = "../figures/crsVSana/LDHA_norm.pdf", device = "pdf", height = 4, width =6)
+
+ggsave(ldha_plot, filename = "../figures/crsVSana/LDHA_norm.png", device = "png", height = 4, width =6)
+
+write_csv(gathered_ldha_crs, "../results/LdhaNormCount_crsVSanaerobic.csv")
+```
 ```{r}
 ggsave(cyto_plot, filename = "../figures/crsVSana/cytokine_norm.pdf", device = "pdf", height = 4, width = 6)
 ggsave(mucin_plot, filename = "../figures/crsVSana/mucin_norm.pdf", device = "pdf", height = 4, width = 6)
