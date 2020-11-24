@@ -506,6 +506,59 @@ Now that we have a data frame in a format that can be utilised by ggplot easily,
 ldha_plot <- GroupGeneCountsBox(gathered_ldha_atm) + ggtitle("LDHA")
 ldha_plot
 ```
+
+Plot the normalized count values for Chemokines and TNFA1 Genes
+
+To do this, we first need to list the gene names of interest, then extract normalized count values for those genes.
+```{r}
+#list genes of interest
+chemo <- c("ENSG00000163734",
+"ENSG00000163735",
+"ENSG00000163739",
+"ENSG00000109079")
+#normailized counts for those cytokine genes
+chemo_atm_norm <- normalized_resATM %>%
+  filter (gene %in% chemo)
+```
+
+Now that we have the normalized counts for each of the genes for all samples, to plot using ggplot(), we need to gather the counts for all samples into a single column to allow us to give ggplot the one column with the values we want it to plot.
+
+The gather() function in the tidyr package will perform this operation and will output the normalized counts for all genes for the first sample listed in the first 11 rows, followed by the normalized counts for second sample in the next 11 rows, so on and so forth.
+
+
+```{r}
+# Gathering the columns to have normalized counts to a single column
+gathered_chemo_atm <- chemo_atm_norm %>%
+  gather(colnames(chemo_atm_norm)[2:12], key = "SAMPLE_NAME", value = "normalized_counts")
+
+## check the column header in the "gathered" data frame
+head(gathered_chemo_atm)
+```
+
+Now, if we want our counts colored by sample group, then we need to combine the metadata information with the melted normalized counts data into the same data frame for input to ggplot():
+```{r}
+gathered_chemo_atm <- inner_join(DE_meta, gathered_chemo_atm, by = c("SAMPLE_NAME" = "SAMPLE_NAME"))
+```
+The inner_join() will merge 2 data frames with respect to the "SAMPLE_NAME" column, i.e. a column with the same column name in both data frames.
+
+Now that we have a data frame in a format that can be utilised by ggplot easily, let's plot!
+
+```{r}
+## plot using GroupGeneCount function
+chemo_plot <- GroupGeneCountsBox(gathered_chemo_atm) + ggtitle("Chemokine Genes")
+chemo_plot
+```
+
+
+```{r}
+
+ggsave(chemo_plot, filename = "../figures/anaVSaer/chemo_norm.pdf", device = "pdf", height = 4, width =6)
+
+ggsave(chemo_plot, filename = "../figures/anaVSaer/chemo_norm.png", device = "png", height = 4, width =6)
+
+write_csv(gathered_chemo_atm, "../results/ChemoNormCount_anaerobicVSaerobic.csv")
+```
+
 ```{r}
 
 ggsave(ldha_plot, filename = "../figures/anaVSaer/LDHA_norm.pdf", device = "pdf", height = 4, width =6)
