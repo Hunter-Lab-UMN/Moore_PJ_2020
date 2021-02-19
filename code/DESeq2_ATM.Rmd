@@ -188,7 +188,7 @@ makeMA_05 <- function(x){
                 fdr = 0.05, 
                 fc = 2, 
                 size = 1, 
-                palette = alpha(c("limegreen", "firebrick2", "gray50"),0.35),
+                palette = alpha(c("#2b74e2","#df5f5b", "gray50"),0.35),
                 genenames = as.vector(x$symbol),
                 legend = "top", 
                 top = 20,
@@ -206,7 +206,7 @@ makeMA_01 <- function(x){
                 fdr = 0.01, 
                 fc = 2, 
                 size = 1, 
-                palette = alpha(c("limegreen", "firebrick2", "gray50"),0.35),
+                palette = alpha(c("#2b74e2","#df5f5b", "gray50"),0.35),
                 genenames = as.vector(x$symbol),
                 legend = "top", 
                 top = 20,
@@ -223,7 +223,7 @@ makeMA_001 <- function(x){
                 fdr = 0.001, 
                 fc = 2, 
                 size = 1, 
-                palette = alpha(c("limegreen", "firebrick2", "gray50"),0.35),
+                palette = alpha(c("#2b74e2","#df5f5b", "gray50"),0.35),
                 genenames = as.vector(x$symbol),
                 legend = "top", 
                 top = 20,
@@ -241,7 +241,7 @@ makeMA_001_two <- function(x){
                 fdr = 0.001, 
                 fc = 2, 
                 size = 1, 
-                palette = alpha(c("limegreen", "firebrick2", "gray50"),0.35),
+                palette = alpha(c("#2b74e2","#df5f5b", "gray50"),0.35),
                 genenames = as.vector(x$symbol),
                 legend = "top", 
                 top = 0,
@@ -265,7 +265,7 @@ maPlotATM_05 <- makeMA_05(resATM_df) + ggtitle("Anaerobic vs Aerobic (ref)") +th
     legend.title = element_blank(),
     legend.position = "top") +
   guides(colour = guide_legend(override.aes = list(alpha=0.5, size=3))) +
-  scale_colour_manual(values = alpha(c("limegreen", "firebrick2", "gray60"),0.5), labels = c("Upregulated (262)", "Downregulated (104)", "NS"))
+  scale_colour_manual(values = alpha(c("#2b74e2","#df5f5b", "gray60"),0.5), labels = c("Upregulated (262)", "Downregulated (104)", "NS"))
 
 maPlotATM_05
 ggsave(plot = maPlotATM_05, filename = "../figures/anaVSaer/maPlotATM_aerREF_05.pdf", device = "pdf", height = 5, width = 6)
@@ -276,7 +276,7 @@ maPlotATM_01 <- makeMA_01(resATM_df) + ggtitle("Anaerobic vs Aerobic (ref)") +th
     legend.title = element_blank(),
     legend.position = "top") +
   guides(colour = guide_legend(override.aes = list(alpha=0.5, size=3))) +
-  scale_colour_manual(values = alpha(c("limegreen", "firebrick2", "gray60"),0.5), labels = c("Upregulated (204)", "Downregulated (72)", "NS"))
+  scale_colour_manual(values = alpha(c("#2b74e2","#df5f5b", "gray60"),0.5), labels = c("Upregulated (204)", "Downregulated (72)", "NS"))
 maPlotATM_01
 ggsave(plot = maPlotATM_01, filename = "../figures/anaVSaer/maPlotATM_aerREF_01.pdf", device = "pdf", height = 4, width = 6)
 ggsave(plot = maPlotATM_01, filename = "../figures/anaVSaer/maPlotATM_aerREF_01.png", device = "png", height = 4, width = 6)
@@ -286,7 +286,7 @@ maPlotATM_001 <- makeMA_001(resATM_df) + ggtitle("Anaerobic vs Aerobic (ref)") +
     legend.title = element_blank(),
     legend.position = "top") +
   guides(colour = guide_legend(override.aes = list(alpha=0.5, size=3))) +
-  scale_colour_manual(values = alpha(c("limegreen", "firebrick2", "gray60"),0.5), labels = c("Upregulated (117)", "Downregulated (31)", "NS"))
+  scale_colour_manual(values = alpha(c("#2b74e2","#df5f5b", "gray60"),0.5), labels = c("Upregulated (117)", "Downregulated (31)", "NS"))
 maPlotATM_001
 ggsave(plot = maPlotATM_001, filename = "../figures/anaVSaer/maPlotATM_aerREF_001.pdf", device = "pdf", height = 4, width = 6)
 ggsave(plot = maPlotATM_001, filename = "../figures/anaVSaer/maPlotATM_aerREF_001.png", device = "png", height = 4, width = 6)
@@ -296,7 +296,7 @@ maPlotATM_001_sa <- makeMA_001_two(resATM_df) + ggtitle("Anaerobic vs Aerobic (r
     legend.title = element_blank(),
     legend.position = "top") +
   guides(colour = guide_legend(override.aes = list(alpha=0.5, size=3))) +
-  scale_colour_manual(values = alpha(c("limegreen", "firebrick2", "gray60"),0.5), labels = c("Upregulated (117)", "Downregulated (31)", "NS"))
+  scale_colour_manual(values = alpha(c("#2b74e2","#df5f5b", "gray60"),0.5), labels = c("Upregulated (117)", "Downregulated (31)", "NS"))
 maPlotATM_001_sa
 ggsave(plot = maPlotATM_001_sa, filename = "../figures/anaVSaer/maPlotATM_aerREF_001_sa.pdf", device = "pdf", height = 4, width = 6)
 ggsave(plot = maPlotATM_001_sa, filename = "../figures/anaVSaer/maPlotATM_aerREF_001_sa.png", device = "png", height = 4, width = 6)
