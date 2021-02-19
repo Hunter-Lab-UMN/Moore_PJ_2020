@@ -114,15 +114,14 @@ write_csv(resCRS_df, "../results/DEresults_CRSVSanaerobic.csv")
 
 ```{r}
 # Set filtering parametes for alpha and lfc
-padj.cutoff <- 0.05
+padj.cutoff <- 0.001
 lfc.cutoff <- 1
 # Subset the significant results
-sig_resCRS_p05 <- dplyr::filter(resCRS_df, padj < 0.05 & abs(log2FoldChange) > lfc.cutoff)
-sig_resCRS_p01 <- dplyr::filter(resCRS_df, padj < 0.01 & abs(log2FoldChange) > lfc.cutoff)
+sig_resCRS_p001 <- dplyr::filter(resCRS_df, padj < 0.001 & abs(log2FoldChange) > lfc.cutoff)
 
 
-write_csv(sig_resCRS_p05, "../results/DEresults_sig_crsVSana_p05.csv")
-write_csv(sig_resCRS_p01, "../results/DEresults_sig_crsVSana_p01.csv")
+write_csv(sig_resCRS_p001, "../results/DEresults_sig_crsVSana_p001.csv")
+
 ```
 # MA Plot
 ### Function: Custom MA Plots
