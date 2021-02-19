@@ -167,56 +167,21 @@ write_csv(resATM_df, "../results/DEresults_anaerobicVSaerobic.csv")
 
 ```{r}
 # Set filtering parametes for alpha and lfc
-padj.cutoff <- 0.05
+padj.cutoff <- 0.001
 lfc.cutoff <- 1
 # Subset the significant results
-sig_resATM_p05 <- dplyr::filter(resATM_df, padj < 0.05 & abs(log2FoldChange) > lfc.cutoff)
-sig_resATM_p01 <- dplyr::filter(resATM_df, padj < 0.01 & abs(log2FoldChange) > lfc.cutoff)
+sig_resATM_p001 <- dplyr::filter(resATM_df, padj < 0.001 & abs(log2FoldChange) > lfc.cutoff)
 
 #sig_resCRS <- left_join(x = sig_resCRS, y = grch38_df, by = "ensgene")
-write_csv(sig_resATM_p05, "../results/DEresults_sig_anaVSaer_p05.csv")
-write_csv(sig_resATM_p01, "../results/DEresults_sig_anaVSaer_p01.csv")
+write_csv(sig_resATM_p001, "../results/DEresults_sig_anaVSaer_p001.csv")
+
 ```
 # MA Plot
 ### Function: Custom MA Plots
 Plot log2FC on the y axis and log2 mean normalized counts on the x-axis.  
 Color is based on the adjusted p-value
 ```{r}
-makeMA_05 <- function(x){
-  p <- ggmaplot(x, 
-                #fc of 2 corresponds to the log2fc of 1 we tested in our hyp. in the results command
-                fdr = 0.05, 
-                fc = 2, 
-                size = 1, 
-                palette = alpha(c("#2b74e2","#df5f5b", "gray50"),0.35),
-                genenames = as.vector(x$symbol),
-                legend = "top", 
-                top = 20,
-                select.top.method	= "fc",
-                font.label = c(10, "bold", "black"),
-                font.legend = "bold",
-                font.main = "bold",
-                ggtheme = ggplot2::theme_minimal())
-  p
-}
 
-makeMA_01 <- function(x){
-  p <- ggmaplot(x, 
-                #fc of 2 corresponds to the log2fc of 1 we tested in our hyp. in the results command
-                fdr = 0.01, 
-                fc = 2, 
-                size = 1, 
-                palette = alpha(c("#2b74e2","#df5f5b", "gray50"),0.35),
-                genenames = as.vector(x$symbol),
-                legend = "top", 
-                top = 20,
-                select.top.method	= "fc",
-                font.label = c(10, "bold", "black"),
-                font.legend = "bold",
-                font.main = "bold",
-                ggtheme = ggplot2::theme_minimal())
-  p
-}
 makeMA_001 <- function(x){
   p <- ggmaplot(x, 
                 #fc of 2 corresponds to the log2fc of 1 we tested in our hyp. in the results command
@@ -246,7 +211,7 @@ makeMA_001_two <- function(x){
                 legend = "top", 
                 top = 0,
                 select.top.method	= "fc",
-                label.select = c("SERPINA1", "ANGPTL4"),
+                #label.select = c("SERPINA1", "ANGPTL4"),
               
                 font.label = c(10, "bold", "black"),
                 font.legend = "bold",
@@ -260,26 +225,6 @@ makeMA_001_two <- function(x){
 
 ## Plots for anaerobic vs aerobic
 ```{r}
-maPlotATM_05 <- makeMA_05(resATM_df) + ggtitle("Anaerobic vs Aerobic (ref)") +theme(
-    legend.text = element_text(size=rel(0.9)),  
-    legend.title = element_blank(),
-    legend.position = "top") +
-  guides(colour = guide_legend(override.aes = list(alpha=0.5, size=3))) +
-  scale_colour_manual(values = alpha(c("#2b74e2","#df5f5b", "gray60"),0.5), labels = c("Upregulated (262)", "Downregulated (104)", "NS"))
-
-maPlotATM_05
-ggsave(plot = maPlotATM_05, filename = "../figures/anaVSaer/maPlotATM_aerREF_05.pdf", device = "pdf", height = 5, width = 6)
-ggsave(plot = maPlotATM_05, filename = "../figures/anaVSaer/maPlotATM_aerREF_05.png", device = "png", height = 5, width = 6)
-
-maPlotATM_01 <- makeMA_01(resATM_df) + ggtitle("Anaerobic vs Aerobic (ref)") +theme(
-    legend.text = element_text(size=rel(0.9)),  
-    legend.title = element_blank(),
-    legend.position = "top") +
-  guides(colour = guide_legend(override.aes = list(alpha=0.5, size=3))) +
-  scale_colour_manual(values = alpha(c("#2b74e2","#df5f5b", "gray60"),0.5), labels = c("Upregulated (204)", "Downregulated (72)", "NS"))
-maPlotATM_01
-ggsave(plot = maPlotATM_01, filename = "../figures/anaVSaer/maPlotATM_aerREF_01.pdf", device = "pdf", height = 4, width = 6)
-ggsave(plot = maPlotATM_01, filename = "../figures/anaVSaer/maPlotATM_aerREF_01.png", device = "png", height = 4, width = 6)
 
 maPlotATM_001 <- makeMA_001(resATM_df) + ggtitle("Anaerobic vs Aerobic (ref)") +theme(
     legend.text = element_text(size=rel(0.9)),  
@@ -674,54 +619,6 @@ library(EnhancedVolcano)
 
 
 ```{r}
-volcano_atm_01 <- EnhancedVolcano(resATM_df,
-                lab = resATM_df$symbol,
-                x = 'log2FoldChange',
-                y= 'pvalue',
-                xlim = c(-5,5),
-                title = "Anaerobic vs Aerobic",
-                subtitle = "",
-                caption = "",
-                hlineCol = 'black',
-                vlineCol = 'black',
-                colAlpha = 4/5,
-                FCcutoff = 1,
-                pCutoff = 0.01,
-                pointSize = 1.5,
-                labCol = 'black',
-                cutoffLineCol = 'black',
-                border = "full",
-                col = c("grey30", "#EEC537", "#8AC1BE", "#D7462E"),
-                legendPosition = 'none'
-            )
-volcano_atm_01
-```
-
-```{r}
-volcano_atm_05 <- EnhancedVolcano(resATM_df,
-                lab = resATM_df$symbol,
-                x = 'log2FoldChange',
-                y= 'pvalue',
-                xlim = c(-5,5),
-                title = "Anaerobic vs Aerobic",
-                subtitle = "",
-                caption = "",
-                hlineCol = 'black',
-                vlineCol = 'black',
-                colAlpha = 4/5,
-                FCcutoff = 1,
-                pCutoff = 0.05,
-                pointSize = 1.5,
-                labCol = 'black',
-                cutoffLineCol = 'black',
-                border = "full",
-                col = c("grey30", "#EEC537", "#8AC1BE", "#D7462E"),
-                legendPosition = 'none'
-            )
-volcano_atm_05
-```
-
-```{r}
 volcano_atm_001 <- EnhancedVolcano(resATM_df,
                 lab = resATM_df$symbol,
                 x = 'log2FoldChange',
@@ -746,14 +643,12 @@ volcano_atm_001
 ```
 
 ```{r}
-ggsave(volcano_atm_01, filename = "../figures/anaVSaer/volcano_atm_01.pdf", device = "pdf", height = 6, width = 6)
-ggsave(volcano_atm_05, filename = "../figures/anaVSaer/volcano_atm_05.pdf", device = "pdf", height = 6, width = 6)
+
 ggsave(volcano_atm_001, filename = "../figures/anaVSaer/volcano_atm_001.pdf", device = "pdf", height = 6, width = 6)
 
 ```
 ```{r}
-ggsave(volcano_atm_01, filename = "../figures/anaVSaer/volcano_atm_01.png", device = "png", height = 6, width = 6)
-ggsave(volcano_atm_05, filename = "../figures/anaVSaer/volcano_atm_05.png", device = "png", height = 6, width = 6)
+
 ggsave(volcano_atm_001, filename = "../figures/anaVSaer/volcano_atm_001.png", device = "png", height = 6, width = 6)
 
 ```
@@ -814,69 +709,6 @@ keyvals.colorATM <-
 
 
 ```{r}
-volcano_ATM_group_05 <- EnhancedVolcano(res_dfATMvolcanogenes,
-                lab = res_dfATMvolcanogenes$siggenes,
-                labSize = 3.5,
-                boxedLabels = FALSE,
-                drawConnectors = TRUE,
-                widthConnectors = 0.05,
-                colConnectors = "grey30",
-                typeConnectors = "closed",
-                endsConnectors = "first",
-                lengthConnectors = unit(10e-5, 'npc'),
-                x = 'log2FoldChange',
-                y = 'padj',
-                xlim = c(-4,4),
-                title = NULL,
-                subtitle = "",
-                caption = "",
-                colCustom = keyvals.colorATM,
-                hlineCol = 'black',
-                vlineCol = 'black',
-                colAlpha = 0.5,
-                pointSize = 3,
-                FCcutoff = 1,
-                pCutoff = 0.05,
-                labCol = 'black',
-                cutoffLineCol = 'black',
-                border = "full",
-                legendPosition = "none"
-                )
-volcano_ATM_group_05
-```
-
-```{r}
-volcano_ATM_group_01 <- EnhancedVolcano(res_dfATMvolcanogenes,
-                lab = res_dfATMvolcanogenes$siggenes,
-                labSize = 3.5,
-                boxedLabels = FALSE,
-                drawConnectors = TRUE,
-                widthConnectors = 0.05,
-                colConnectors = "grey30",
-                typeConnectors = "closed",
-                endsConnectors = "first",
-                lengthConnectors = unit(10e-5, 'npc'),
-                x = 'log2FoldChange',
-                y = 'padj',
-                xlim = c(-4,4),
-                title = NULL,
-                subtitle = "",
-                caption = "",
-                colCustom = keyvals.colorATM,
-                hlineCol = 'black',
-                vlineCol = 'black',
-                colAlpha = 0.5,
-                pointSize = 3,
-                FCcutoff = 1,
-                pCutoff = 0.01,
-                labCol = 'black',
-                cutoffLineCol = 'black',
-                border = "full",
-                legendPosition = "none"
-                )
-volcano_ATM_group_01
-```
-```{r}
 volcano_ATM_group_001 <- EnhancedVolcano(res_dfATMvolcanogenes,
                 lab = res_dfATMvolcanogenes$siggenes,
                 labSize = 3.5,
@@ -908,13 +740,11 @@ volcano_ATM_group_001 <- EnhancedVolcano(res_dfATMvolcanogenes,
 volcano_ATM_group_001
 ```
 ```{r}
-ggsave(volcano_ATM_group_01, filename = "../figures/anaVSaer/volcano_atm_group_01.pdf", device = "pdf", height = 6, width = 6)
-ggsave(volcano_ATM_group_05, filename = "../figures/anaVSaer/volcano_atm_group_05.pdf", device = "pdf", height = 6, width = 6)
+
 ggsave(volcano_ATM_group_001, filename = "../figures/anaVSaer/volcano_atm_group_001.pdf", device = "pdf", height = 6, width = 6)
 ```
 ```{r}
-ggsave(volcano_ATM_group_01, filename = "../figures/anaVSaer/volcano_atm_group_01.png", device = "png", height = 6, width = 6)
-ggsave(volcano_ATM_group_05, filename = "../figures/anaVSaer/volcano_atm_group_05.png", device = "png", height = 6, width = 6)
+
 ggsave(volcano_ATM_group_001, filename = "../figures/anaVSaer/volcano_atm_group_001.png", device = "png", height = 6, width = 6)
 ```
 
