@@ -211,7 +211,7 @@ makeMA_001_two <- function(x){
                 legend = "top", 
                 top = 0,
                 select.top.method	= "fc",
-                #label.select = c("SERPINA1", "ANGPTL4"),
+                label.select = c("SERPINA1", "ANGPTL4", "ICAM1", "TGFB1"),
               
                 font.label = c(10, "bold", "black"),
                 font.legend = "bold",
