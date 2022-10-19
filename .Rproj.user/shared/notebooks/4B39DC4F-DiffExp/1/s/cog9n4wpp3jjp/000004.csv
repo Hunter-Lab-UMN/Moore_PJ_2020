@@ -1,0 +1,12 @@
+"0","```r
+
+# Subset the counts to only the B cells
+counts <- pb[[clusters[3]]]
+
+cluster_counts <- as.data.frame(as.matrix(counts[, which(colnames(counts) %in% rownames(cluster_metadata))]))
+
+# Check that all of the row names of the metadata are the same and in the same order as the column names of the counts in order to use as input to DESeq2
+all(rownames(cluster_metadata) == colnames(cluster_counts))         
+```"
+"1","[1] TRUE
+"

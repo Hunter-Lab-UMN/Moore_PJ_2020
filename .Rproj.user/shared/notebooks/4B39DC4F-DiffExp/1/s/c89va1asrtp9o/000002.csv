@@ -1,0 +1,5 @@
+"0","```r
+# Subset the metadata to only the B cells
+cluster_metadata <- metadata[which(metadata$cluster_id == clusters[1]), ]
+head(cluster_metadata)
+```"

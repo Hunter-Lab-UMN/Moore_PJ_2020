@@ -1,0 +1,3 @@
+"0","# Plot the elbow plot"
+"0","ElbowPlot(object = seurat_integrated, "
+"0","          ndims = 40)"

@@ -1,0 +1,2 @@
+"0","my_levels <- c(""Ciliated"", ""Basal"", ""Ionocytes"", ""Secretory"", ""Unknown"")"
+"0","levels(seurat) <- my_levels"

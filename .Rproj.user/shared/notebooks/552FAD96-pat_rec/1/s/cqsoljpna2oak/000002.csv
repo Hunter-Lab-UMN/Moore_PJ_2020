@@ -1,0 +1,6 @@
+"0","ggsave(nod1, filename = ""../results/patrec/nebulosa_NOD1_ana.pdf"", device = ""pdf"", height = 4, width = 4)"
+"0","ggsave(nod2, filename = ""../results/patrec/nebulosa_NOD2_ana.pdf"", device = ""pdf"", height = 4, width = 4)"
+"0","ggsave(nlrx1, filename = ""../results/patrec/nebulosa_NLRX1_ana.pdf"", device = ""pdf"", height = 4, width = 4)"
+"0","ggsave(nlrx1, filename = ""../results/patrec/nebulosa_NAIP_ana.pdf"", device = ""pdf"", height = 4, width = 4)"
+"0","ggsave(ciita, filename = ""../results/patrec/nebulosa_CIITA_ana.pdf"", device = ""pdf"", height = 4, width = 4)"
+"0",""

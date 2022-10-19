@@ -1,0 +1,18 @@
+"0","```r
+# Create a data frame with the sample IDs, cluster IDs and condition
+
+gg_df <- data.frame(cluster_id = de_cluster_ids,
+                    sample = de_samples)
+
+gg_df <- left_join(gg_df, ei[, c(\"sample\", \"condition\")]) 
+```"
+"1","Joining, by = \"sample\"
+"
+"0","```r
+metadata <- gg_df %>%
+  dplyr::select(cluster_id, sample, condition) 
+
+metadata$cluster_id <- factor(metadata$cluster_id)
+
+head(metadata, n = 10)
+```"

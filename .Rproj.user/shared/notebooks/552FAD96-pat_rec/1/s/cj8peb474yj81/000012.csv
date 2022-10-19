@@ -1,0 +1,3 @@
+"0",""
+"0",""
+"0","ggsave(tlr1, filename = ""../results/patrec/nebulosa_TLR1_ana.pdf"", device = ""pdf"", height = 4, width = 4)"

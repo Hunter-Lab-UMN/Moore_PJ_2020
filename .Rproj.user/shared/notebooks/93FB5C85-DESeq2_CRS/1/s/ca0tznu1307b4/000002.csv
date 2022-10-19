@@ -1,0 +1,6 @@
+"0",""
+"0","ggsave(ldha_plot, filename = ""../figures/crsVSana/LDHA_norm.pdf"", device = ""pdf"", height = 4, width =6)"
+"0",""
+"0","ggsave(ldha_plot, filename = ""../figures/crsVSana/LDHA_norm.png"", device = ""png"", height = 4, width =6)"
+"0",""
+"0","write_csv(gathered_ldha_crs, ""../results/LdhaNormCount_crsVSanaerobic.csv"")"

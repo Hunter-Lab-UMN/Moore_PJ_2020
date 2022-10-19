@@ -1,0 +1,6 @@
+"0",""
+"0","ggsave(chemo_plot, filename = ""../figures/anaVSaer/chemo_norm.pdf"", device = ""pdf"", height = 4, width =6)"
+"0",""
+"0","ggsave(chemo_plot, filename = ""../figures/anaVSaer/chemo_norm.png"", device = ""png"", height = 4, width =6)"
+"0",""
+"0","write_csv(gathered_chemo_atm, ""../results/ChemoNormCount_anaerobicVSaerobic.csv"")"

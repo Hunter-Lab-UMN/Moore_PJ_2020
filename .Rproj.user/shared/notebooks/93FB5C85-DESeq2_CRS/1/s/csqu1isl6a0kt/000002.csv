@@ -1,0 +1,6 @@
+"0","# Turn the results object into a data frame"
+"0","resCRS_df <- data.frame(resCRS) %>%"
+"0","  rownames_to_column(""ensgene"") %>%"
+"0","  left_join(grch38_df, by = ""ensgene"") # Join annotation data to dataframe"
+"0","# Save as csv "
+"0","write_csv(resCRS_df, ""../results/DEresults_CRSVSanaerobic.csv"")"

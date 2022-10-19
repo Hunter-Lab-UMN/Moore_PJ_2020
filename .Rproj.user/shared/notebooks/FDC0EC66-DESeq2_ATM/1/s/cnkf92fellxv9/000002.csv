@@ -1,0 +1,5 @@
+"0","#list genes of interest"
+"0","LDHA <- ""ENSG00000134333"""
+"0","#normailized counts for those mucin genes"
+"0","ldha_atm_norm <- normalized_resATM %>%"
+"0","  filter (gene %in% LDHA)"

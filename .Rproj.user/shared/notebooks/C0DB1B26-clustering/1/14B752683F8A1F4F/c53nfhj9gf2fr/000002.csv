@@ -1,0 +1,2 @@
+"0","# Assign identity of clusters"
+"0","Idents(object = seurat_integrated) <- ""integrated_snn_res.0.4"""

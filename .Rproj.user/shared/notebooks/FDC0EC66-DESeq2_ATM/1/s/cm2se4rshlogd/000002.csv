@@ -1,0 +1,3 @@
+"0","## plot using GroupGeneCount function"
+"0","HIF1A_plot <- GroupGeneCountsBox(gathered_hif1a_atm) + ggtitle(""HIF1A"")"
+"0","HIF1A_plot"

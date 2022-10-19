@@ -1,0 +1,3 @@
+"0","write_csv(gathered_cyto_atm, ""../results/CytoNormCount_anaerobicVSaerobic.csv"")"
+"0","write_csv(gathered_mucin_atm, ""../results/MucinNormCount_anaerobicVSaerobic.csv"")"
+"0","write_csv(gathered_hif1a_atm, ""../results/Hif1aNormCount_anaerobicVSaerobic.csv"")"

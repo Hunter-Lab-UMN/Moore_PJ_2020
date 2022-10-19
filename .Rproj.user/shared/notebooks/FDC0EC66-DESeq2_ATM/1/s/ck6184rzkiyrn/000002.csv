@@ -1,0 +1,6 @@
+"0","#list genes of interest"
+"0","stress <- c(""ENSG00000197249"","
+"0","""ENSG00000167772"")"
+"0","#normailized counts for those cytokine genes"
+"0","stress_atm_norm <- normalized_resATM %>%"
+"0","  filter (gene %in% stress)"

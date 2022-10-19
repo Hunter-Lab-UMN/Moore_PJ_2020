@@ -1,0 +1,2 @@
+"0","normalized_resCRS <- inner_join(norm_counts_crs, resCRS_df, by = c(""gene"" = ""ensgene""))"
+"0","view(normalized_resCRS)"

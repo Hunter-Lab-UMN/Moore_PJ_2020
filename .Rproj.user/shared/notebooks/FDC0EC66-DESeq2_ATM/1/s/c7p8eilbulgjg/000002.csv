@@ -1,0 +1,2 @@
+"0","## Explore the grch38 table loaded by the annotables library"
+"0","grch38_df <- data.frame(grch38)"

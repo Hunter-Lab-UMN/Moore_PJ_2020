@@ -1,0 +1,6 @@
+"0","```r
+# Explore whether clusters segregate by cell cycle phase
+DimPlot(seurat_integrated,
+        label = TRUE, 
+        split.by = \"Phase\")  + NoLegend()
+```"

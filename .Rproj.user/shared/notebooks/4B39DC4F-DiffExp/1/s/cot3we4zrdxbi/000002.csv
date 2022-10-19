@@ -1,0 +1,7 @@
+"0","```r
+# Generate vector of cluster IDs
+clusters <- levels(metadata$cluster_id)
+clusters
+```"
+"1","[1] \"Basal\"     \"Ciliated\"  \"Ionocytes\" \"Secretory\" \"Unknown\"  
+"

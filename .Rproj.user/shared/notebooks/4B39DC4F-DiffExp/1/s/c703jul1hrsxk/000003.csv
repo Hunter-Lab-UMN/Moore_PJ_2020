@@ -1,0 +1,8 @@
+"0","```r
+
+# Write significant results to file
+write.csv(sig_res,
+          paste0(\"../results/\", clusters[3], \"_sig_genes05.csv\"),
+          quote = FALSE, 
+          row.names = FALSE)
+```"

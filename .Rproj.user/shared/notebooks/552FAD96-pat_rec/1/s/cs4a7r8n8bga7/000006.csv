@@ -1,0 +1,4 @@
+"0",""
+"0",""
+"0","nlrp12 <- plot_density(seurat_ana, c(""NLRP12"")) + theme(axis.text = element_text(size = 15))"
+"0","nlrp12"

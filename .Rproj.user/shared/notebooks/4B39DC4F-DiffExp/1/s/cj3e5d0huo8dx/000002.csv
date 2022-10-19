@@ -1,0 +1,2 @@
+"0","# Identify groups for aggregation of counts"
+"0","groups <- colData(sce)[, c(""cluster_id"", ""sample"")]"

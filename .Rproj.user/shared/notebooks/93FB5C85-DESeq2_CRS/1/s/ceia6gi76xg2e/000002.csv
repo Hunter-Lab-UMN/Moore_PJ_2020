@@ -1,0 +1,2 @@
+"0","write_csv(gathered_cyto_crs, ""../results/CytoNormCount_crsVSanaerobic.csv"")"
+"0","write_csv(gathered_mucin_crs, ""../results/MucinNormCount_crsVSanaerobic.csv"")"

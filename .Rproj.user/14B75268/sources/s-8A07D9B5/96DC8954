@@ -1,0 +1,26 @@
+{
+    "id": "96DC8954",
+    "path": "~/Desktop/HunterLab/SeqProjects/Moore_PJ_2020/single_cell/code/DiffExp.Rmd",
+    "project_path": "single_cell/code/DiffExp.Rmd",
+    "type": "r_markdown",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1666202614563.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "chunk_output_type": "inline",
+        "docOutlineVisible": "1",
+        "cursorPosition": "1378,91",
+        "scrollLine": "1335"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1666203856,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1666203856981,
+    "read_only": false,
+    "read_only_alternatives": []
+}

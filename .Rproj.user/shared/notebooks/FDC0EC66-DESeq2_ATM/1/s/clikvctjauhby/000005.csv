@@ -1,0 +1,3 @@
+"0","## plot using GroupGeneCount function"
+"0","stress_plot <- GroupGeneCountsBox(gathered_stress_atm) + ggtitle(""Cell Stress Genes"")"
+"0","stress_plot"

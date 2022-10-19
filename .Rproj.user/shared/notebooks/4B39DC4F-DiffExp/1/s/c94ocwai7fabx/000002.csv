@@ -1,0 +1,11 @@
+"0","```r
+# Run DESeq2 differential expression analysis
+dds <- DESeq(dds)
+```"
+"1","estimating size factors
+estimating dispersions
+gene-wise dispersion estimates
+mean-dispersion relationship
+final dispersion estimates
+fitting model and testing
+"

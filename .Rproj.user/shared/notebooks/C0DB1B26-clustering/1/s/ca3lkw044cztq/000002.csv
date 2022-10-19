@@ -1,0 +1,7 @@
+"0","```r
+# Select the RNA counts slot to be the default assay
+DefaultAssay(seurat_integrated) <- \"RNA\"
+
+# Normalize RNA data for visualization purposes
+seurat_integrated <- NormalizeData(seurat_integrated, verbose = FALSE)
+```"

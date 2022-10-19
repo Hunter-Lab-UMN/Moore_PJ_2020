@@ -1,0 +1,12 @@
+"0","library(""Nebulosa"")"
+"2","Loading required package: patchwork
+"
+"2","
+Attaching package: ‘patchwork’
+
+"
+"2","The following object is masked from ‘package:cowplot’:
+
+    align_plots
+
+"

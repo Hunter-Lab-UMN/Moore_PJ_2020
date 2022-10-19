@@ -1,0 +1,4 @@
+"0",""
+"0",""
+"0","nod2 <- plot_density(seurat_ana, c(""NOD2"")) + theme(axis.text = element_text(size = 15))"
+"0","nod2"

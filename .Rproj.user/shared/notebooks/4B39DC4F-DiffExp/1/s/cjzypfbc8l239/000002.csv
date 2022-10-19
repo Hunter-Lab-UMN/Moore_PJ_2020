@@ -1,0 +1,4 @@
+"0","```r
+# Plot dispersion estimates
+plotDispEsts(dds)
+```"

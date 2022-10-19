@@ -1,0 +1,5 @@
+"0","```r
+# Plot the elbow plot
+ElbowPlot(object = seurat_integrated, 
+          ndims = 40)
+```"

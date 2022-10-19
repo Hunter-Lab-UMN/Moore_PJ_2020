@@ -1,0 +1,8 @@
+"0","```r
+# Extract the rlog matrix from the object and compute pairwise correlation values
+rld_mat <- assay(rld)
+rld_cor <- cor(rld_mat)
+
+# Plot heatmap
+pheatmap(rld_cor, annotation = cluster_metadata[, c(\"condition\"), drop=F])
+```"

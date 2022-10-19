@@ -1,0 +1,13 @@
+"0","```r
+# Determine metrics to plot present in seurat_integrated@meta.data
+metrics <-  c(\"nUMI\", \"nGene\", \"S.Score\", \"G2M.Score\", \"mitoRatio\")
+
+FeaturePlot(seurat_integrated, 
+            reduction = \"umap\", 
+            features = metrics,
+            pt.size = 0.4, 
+            order = TRUE,
+            min.cutoff = 'q10',
+            label = TRUE)
+
+```"

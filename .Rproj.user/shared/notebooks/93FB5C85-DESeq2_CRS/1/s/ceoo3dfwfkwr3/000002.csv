@@ -1,0 +1,6 @@
+"0",""
+"0","ggsave(fig4f_plot, filename = ""../figures/crsVSana/fig4f.pdf"", device = ""pdf"", height = 4, width =6)"
+"0",""
+"0","ggsave(fig4f_plot, filename = ""../figures/crsVSana/fig4f.png"", device = ""png"", height = 4, width =6)"
+"0",""
+"0","write_csv(gathered_fig4f_crs, ""../results/Fig4fNormCount_crsVSanaerobic.csv"")"

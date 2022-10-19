@@ -1,0 +1,6 @@
+"0","# Gathering the columns to have normalized counts to a single column"
+"0","gathered_hif1a_atm <- hif1a_atm_norm %>%"
+"0","  gather(colnames(hif1a_atm_norm)[2:12], key = ""SAMPLE_NAME"", value = ""normalized_counts"")"
+"0",""
+"0","## check the column header in the ""gathered"" data frame"
+"0","head(gathered_hif1a_atm)"

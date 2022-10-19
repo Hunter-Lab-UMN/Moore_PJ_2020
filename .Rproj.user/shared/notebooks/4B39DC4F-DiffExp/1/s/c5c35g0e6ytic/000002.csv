@@ -1,0 +1,13 @@
+"0","```r
+# Set thresholds
+padj_cutoff <- 0.05
+l2fc.cutoff <- 1
+##NOTE: Here we are just using a p-value cutoff to denote significance. We could also add a log2fc filter as well.
+
+# Subset the significant results
+sig_res <- dplyr::filter(res_tbl, padj < padj_cutoff & abs(log2FoldChange) > l2fc.cutoff) %>%
+  dplyr::arrange(padj)
+
+# Check significant genes output
+sig_res
+```"

@@ -1,0 +1,2 @@
+"0","zbp1 <- plot_density(seurat_ana, c(""ZBP1"")) + theme(axis.text = element_text(size = 15))"
+"0","zbp1"

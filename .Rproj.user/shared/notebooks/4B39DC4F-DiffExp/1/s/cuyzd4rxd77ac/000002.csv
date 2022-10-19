@@ -1,0 +1,24 @@
+"0","```r
+# Extract normalized counts for only the significant genes
+sig_norm <- data.frame(normalized_counts) %>%
+  rownames_to_column(var = \"gene\") %>%
+  dplyr::filter(gene %in% sig_res$gene)
+
+labels <- sig_norm$gene
+# Set a color palette
+heat_colors <- brewer.pal(6, \"YlOrRd\")
+
+# Run pheatmap using the metadata data frame for the annotation
+heatmap_basal <- pheatmap(sig_norm[ , 2:length(colnames(sig_norm))], 
+         color = heat_colors, 
+         cluster_rows = T, 
+         show_rownames = T,
+        show_colnames = F,
+        labels_row = sig_norm$gene,
+         annotation = cluster_metadata[, c(\"condition\", \"cluster_id\")], 
+         border_color = NA, 
+         fontsize = 10, 
+         scale = \"row\", 
+         fontsize_row = 8, 
+         height = 20)    
+```"

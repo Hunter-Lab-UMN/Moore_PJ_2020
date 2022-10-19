@@ -1,0 +1,10 @@
+"0","```r
+FeaturePlot(seurat_integrated, 
+            reduction = \"umap\", 
+            features = c(\"POU2F3\", \"AVIL\", \"GNAT3\", \"TRPM5\"), 
+            order = TRUE,
+            min.cutoff = 'q10', 
+            label = TRUE)
+```"
+"1","The following requested variables were not found: GNAT3, TRPM5
+"

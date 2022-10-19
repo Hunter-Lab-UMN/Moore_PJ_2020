@@ -1,0 +1,5 @@
+"0","```r
+# Save final R object
+write_rds(seurat_integrated,
+          file = \"../data/seurat/seurat_labelled.rds\")
+```"

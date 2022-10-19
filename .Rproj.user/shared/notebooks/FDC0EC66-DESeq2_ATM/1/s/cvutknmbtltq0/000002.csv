@@ -1,0 +1,8 @@
+"0","#list genes of interest"
+"0","chemo <- c(""ENSG00000163734"","
+"0","""ENSG00000163735"","
+"0","""ENSG00000163739"","
+"0","""ENSG00000109079"")"
+"0","#normailized counts for those cytokine genes"
+"0","chemo_atm_norm <- normalized_resATM %>%"
+"0","  filter (gene %in% chemo)"

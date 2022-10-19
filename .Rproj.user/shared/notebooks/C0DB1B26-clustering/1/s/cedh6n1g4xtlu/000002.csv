@@ -1,0 +1,10 @@
+"0","```r
+# Defining the information in the seurat object of interest
+columns <- c(paste0(\"PC_\", 1:16),
+            \"ident\",
+            \"UMAP_1\", \"UMAP_2\")
+
+# Extracting this data from the seurat object
+pc_data <- FetchData(seurat_integrated, 
+                     vars = columns)
+```"

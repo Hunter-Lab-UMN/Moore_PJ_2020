@@ -1,0 +1,2 @@
+"0","normalized_resATM <- inner_join(norm_counts_atm, resATM_df, by = c(""gene"" = ""ensgene""))"
+"0","view(normalized_resATM)"

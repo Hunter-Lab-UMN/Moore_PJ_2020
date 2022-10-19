@@ -1,0 +1,26 @@
+"0","```r
+volcano_ciliated <- EnhancedVolcano(res_tbl,
+                lab = res_tbl$gene,
+                x = 'log2FoldChange',
+                y= 'padj',
+                xlim = c(-3,3),
+                title = \"\",
+                subtitle = \"Ciliated (217 Up, 23 Down)\",
+                caption = \"\",
+                hlineCol = 'black',
+                vlineCol = 'black',
+                colAlpha = 4/5,
+                FCcutoff = 1,
+                pCutoff = 0.05,
+                pointSize = 1.5,
+                labCol = 'black',
+                cutoffLineCol = 'black',
+                border = \"full\",
+                col = c(\"grey30\", \"#EEC537\", \"#8AC1BE\", \"#D7462E\"),
+                legendPosition = 'none',
+                drawConnectors = F,
+                selectLab = \"\"
+                
+            )
+volcano_ciliated
+```"
