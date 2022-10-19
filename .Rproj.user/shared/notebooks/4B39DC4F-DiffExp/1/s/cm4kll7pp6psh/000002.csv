@@ -1,0 +1,9 @@
+"0","```r
+heat<- DoHeatmap(subset(seurat, downsample = 100), features = markers_abbr$Marker, group.by = \"ident\", label=F) & theme(axis.text.y = element_text(size = 5), legend.text = element_text(size = 12)) 
+```"
+"1","The following features were omitted as they were not found in the scale.data slot for the RNA assay: C2orf40
+"
+"0","```r
+heat2 <- heat 
+heat2
+```"

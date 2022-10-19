@@ -1,0 +1,5 @@
+"0","#list genes of interest"
+"0","HIF1A <- ""ENSG00000100644"""
+"0","#normailized counts for those mucin genes"
+"0","hif1a_crs_norm <- normalized_resCRS %>%"
+"0","  filter (gene %in% HIF1A)"

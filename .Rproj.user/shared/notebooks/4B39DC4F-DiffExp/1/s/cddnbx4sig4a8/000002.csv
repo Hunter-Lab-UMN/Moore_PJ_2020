@@ -1,0 +1,30 @@
+"0","```r
+# get normalized counts to export
+secretory_norm <- data.frame(normalized_counts)
+
+secretory_sig_norm <- data.frame(normalized_counts) %>%
+  rownames_to_column(var = \"gene\") %>%
+  dplyr::filter(gene %in% sig_res$gene)
+
+gathered_secretory_sig <- secretory_sig_norm %>%
+  gather(colnames(secretory_sig_norm)[2:length(colnames(secretory_sig_norm))], key = \"samplename\", value = \"normalized_counts\")
+
+gathered_secretory_sig <- inner_join(ei[, c(\"sample\", \"condition\" )], gathered_secretory_sig, by = c(\"sample\" = \"samplename\"))
+
+
+gathered_secretory <- secretory_norm %>%
+  gather(colnames(secretory_norm)[2:length(colnames(secretory_norm))], key = \"samplename\", value = \"normalized_counts\")
+
+gathered_secretory <- inner_join(ei[, c(\"sample\", \"condition\" )], gathered_secretory, by = c(\"sample\" = \"samplename\"))
+
+# Write results to file
+write.csv(gathered_secretory_sig,
+          paste0(\"../results/\", clusters[4], \"_norm_sig.csv\"),
+          quote = FALSE, 
+          row.names = FALSE)
+
+write.csv(gathered_secretory,
+          paste0(\"../results/\", clusters[4], \"_norm.csv\"),
+          quote = FALSE, 
+          row.names = FALSE)
+```"

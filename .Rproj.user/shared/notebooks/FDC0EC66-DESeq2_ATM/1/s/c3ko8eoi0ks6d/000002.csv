@@ -1,0 +1,6 @@
+"0","# Check that the row names of the metadata equal the column names of the **raw counts** data"
+"0","all(colnames(data) == rownames(meta))"
+"1","[1]"
+"1"," TRUE"
+"1","
+"

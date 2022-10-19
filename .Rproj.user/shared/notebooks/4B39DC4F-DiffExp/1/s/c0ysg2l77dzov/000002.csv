@@ -1,0 +1,9 @@
+"0","```r
+# Create DESeq2 object        
+dds <- DESeqDataSetFromMatrix(cluster_counts, 
+                              colData = cluster_metadata, 
+                              design = ~ condition)
+```"
+"1","converting counts to integer mode
+some variables in design formula are characters, converting to factors
+"

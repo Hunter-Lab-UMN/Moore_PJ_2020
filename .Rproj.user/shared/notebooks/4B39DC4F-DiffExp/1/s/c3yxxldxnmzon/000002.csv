@@ -1,0 +1,5 @@
+"0","# Not every cluster is present in all samples; create a vector that represents how to split samples"
+"0","splitf <- sapply(stringr::str_split(rownames(pb), "
+"0","                                    pattern = ""_"",  "
+"0","                                    n = 2), "
+"0","                 `[`, 1)"

@@ -1,0 +1,6 @@
+"0",""
+"0","ggsave(HIF1A_plot, filename = ""../figures/crsVSana/HIF1A_norm.pdf"", device = ""pdf"", height = 4, width =6)"
+"0",""
+"0","ggsave(HIF1A_plot, filename = ""../figures/crsVSana/HIF1A_norm.png"", device = ""png"", height = 4, width =6)"
+"0",""
+"0","write_csv(gathered_hif1a_crs, ""../results/Hif1aNormCount_crsVSanaerobic.csv"")"

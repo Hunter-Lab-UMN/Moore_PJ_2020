@@ -1,0 +1,11 @@
+"0","```r
+# Extract top 10 markers per cluster
+top10 <- conserved_markers %>% 
+  mutate(avg_fc = (ana_avg_log2FC + fuso_avg_log2FC) /2) %>% 
+  group_by(cluster_id) %>% 
+  top_n(n = 10, 
+        wt = avg_fc)
+
+# Visualize top 10 markers per cluster
+View(top10)
+```"

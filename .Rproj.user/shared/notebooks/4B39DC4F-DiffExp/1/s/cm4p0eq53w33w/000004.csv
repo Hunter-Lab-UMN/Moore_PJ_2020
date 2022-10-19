@@ -1,0 +1,8 @@
+"0","# Plot the UMAP"
+"0","umap <- DimPlot(object = seurat, "
+"0","        reduction = ""umap"", "
+"0","        label = F,"
+"0","        label.size = 5,"
+"0","        repel = TRUE) &  theme(axis.text = element_text(size = 15))"
+"0","umap2 <- umap +  guides(color = guide_legend(override.aes = list(size=4), ncol=1) )"
+"0","umap2"

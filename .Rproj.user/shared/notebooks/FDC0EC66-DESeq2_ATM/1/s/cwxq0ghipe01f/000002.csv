@@ -1,0 +1,31 @@
+"0","# Output results of Wald test for contrast"
+"0","contrastATM <- c(""TEST"", ""anaerobic"", ""aerobic"")"
+"0","resATM <- results(dds, contrast = contrastATM)"
+"0","resATM <- lfcShrink(dds, contrast = contrastATM, res=resATM, type = ""ashr"")"
+"2","using 'ashr' for LFC shrinkage. If used in published research, please cite:
+    Stephens, M. (2016) False discovery rates: a new deal. Biostatistics, 18:2.
+    https://doi.org/10.1093/biostatistics/kxw041
+"
+"0","summary(resATM)"
+"1","
+"
+"1","out of 16239 with nonzero total read count
+"
+"1","adjusted p-value < 0.1
+"
+"1","LFC > 0 (up)       : 583, 3.6%
+"
+"1","LFC < 0 (down)     : 386, 2.4%
+"
+"1","outliers [1]       : 1, 0.0062%
+"
+"1","low counts [2]     : 9973, 61%
+"
+"1","(mean count < 2)
+"
+"1","[1] see 'cooksCutoff' argument of ?results
+"
+"1","[2] see 'independentFiltering' argument of ?results
+"
+"1","
+"

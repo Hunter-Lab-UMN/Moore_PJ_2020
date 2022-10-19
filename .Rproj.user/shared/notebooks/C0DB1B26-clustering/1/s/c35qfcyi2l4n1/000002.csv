@@ -1,0 +1,8 @@
+"0","```r
+# Plot the UMAP
+DimPlot(object = seurat_integrated, 
+        reduction = \"umap\", 
+        label = TRUE,
+        label.size = 5,
+        repel = TRUE)
+```"

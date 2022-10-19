@@ -1,0 +1,3 @@
+"0","## plot using GroupGeneCount function"
+"0","fig4f_plot <- GroupGeneCountsBox(gathered_fig4f_crs) + ggtitle(""Fig 4F"")"
+"0","fig4f_plot"

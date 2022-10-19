@@ -1,0 +1,10 @@
+"0","```r
+# Extract identity and sample information from seurat object to determine the number of cells per cluster per sample
+n_cells <- FetchData(seurat_integrated, 
+                     vars = c(\"ident\", \"orig.ident\")) %>%
+        dplyr::count(ident, orig.ident) %>%
+        tidyr::spread(ident, n)
+
+# View table
+View(n_cells)
+```"

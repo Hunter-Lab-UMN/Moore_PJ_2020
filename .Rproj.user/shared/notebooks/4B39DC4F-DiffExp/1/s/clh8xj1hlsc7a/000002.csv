@@ -1,0 +1,7 @@
+"0","```r
+# Transform counts for data visualization
+rld <- rlog(dds, blind=TRUE)
+
+# Plot PCA
+DESeq2::plotPCA(rld, intgroup = \"condition\")
+```"

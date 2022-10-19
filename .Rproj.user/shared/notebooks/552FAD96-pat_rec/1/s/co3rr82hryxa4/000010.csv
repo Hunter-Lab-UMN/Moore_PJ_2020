@@ -1,0 +1,2 @@
+"0","nlrp1 <- plot_density(seurat, c(""NLRP1"")) + theme(axis.text = element_text(size = 15))"
+"0","nlrp1"

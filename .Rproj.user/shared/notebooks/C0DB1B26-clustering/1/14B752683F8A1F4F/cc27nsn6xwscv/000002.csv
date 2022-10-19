@@ -1,0 +1,5 @@
+"0","# Explore heatmap of PCs"
+"0","DimHeatmap(seurat_integrated, "
+"0","           dims = 1:9, "
+"0","           cells = 500, "
+"0","           balanced = TRUE)"

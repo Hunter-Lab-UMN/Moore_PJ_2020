@@ -1,0 +1,8 @@
+"0","```r
+FeaturePlot(seurat_integrated, 
+            reduction = \"umap\", 
+            features = c(\"FOXI1\", \"CFTR\", \"ASCL3\"), 
+            order = TRUE,
+            min.cutoff = 'q10', 
+            label = TRUE)
+```"

@@ -1,0 +1,3 @@
+"0","seurat@meta.data$condition2 <- ifelse(seurat@meta.data$condition == ""ana"", ""Untreated"", ""Treated"")"
+"0",""
+"0",""

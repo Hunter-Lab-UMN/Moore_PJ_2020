@@ -1,0 +1,12 @@
+"0","```r
+# Remove the stressed or dying cells
+seurat_subset_labeled <- subset(seurat_integrated,
+                               idents = \"Unknown\", invert = TRUE)
+
+# Re-visualize the clusters
+DimPlot(object = seurat_subset_labeled, 
+        reduction = \"umap\", 
+        label = TRUE,
+        label.size = 3,
+	repel = TRUE)
+```"

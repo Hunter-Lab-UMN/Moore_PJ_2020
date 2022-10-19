@@ -1,0 +1,30 @@
+"0","```r
+# get normalized counts to export
+ciliated_norm <- data.frame(normalized_counts)
+
+ciliated_sig_norm <- data.frame(normalized_counts) %>%
+  rownames_to_column(var = \"gene\") %>%
+  dplyr::filter(gene %in% sig_res$gene)
+
+gathered_ciliated_sig <- ciliated_sig_norm %>%
+  gather(colnames(ciliated_sig_norm)[2:length(colnames(ciliated_sig_norm))], key = \"samplename\", value = \"normalized_counts\")
+
+gathered_ciliated_sig <- inner_join(ei[, c(\"sample\", \"condition\" )], gathered_ciliated_sig, by = c(\"sample\" = \"samplename\"))
+
+
+gathered_ciliated <- ciliated_norm %>%
+  gather(colnames(ciliated_norm)[2:length(colnames(ciliated_norm))], key = \"samplename\", value = \"normalized_counts\")
+
+gathered_ciliated <- inner_join(ei[, c(\"sample\", \"condition\" )], gathered_ciliated, by = c(\"sample\" = \"samplename\"))
+
+# Write results to file
+write.csv(gathered_ciliated_sig,
+          paste0(\"../results/\", clusters[2], \"_norm_sig.csv\"),
+          quote = FALSE, 
+          row.names = FALSE)
+
+write.csv(gathered_ciliated,
+          paste0(\"../results/\", clusters[2], \"_norm.csv\"),
+          quote = FALSE, 
+          row.names = FALSE)
+```"

@@ -1,0 +1,8 @@
+"0","```r
+FeaturePlot(seurat_integrated, 
+            reduction = \"umap\", 
+            features = c(\"MECOM\", \"ALDH1A1\", \"SERPINB3\", \"SERPINB4\"), 
+            order = TRUE,
+            min.cutoff = 'q10', 
+            label = TRUE)
+```"

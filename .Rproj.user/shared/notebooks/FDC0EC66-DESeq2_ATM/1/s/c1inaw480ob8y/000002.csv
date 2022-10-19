@@ -1,0 +1,6 @@
+"0",""
+"0","ggsave(stress_plot, filename = ""../figures/anaVSaer/stress_norm.pdf"", device = ""pdf"", height = 4, width =6)"
+"0",""
+"0","ggsave(stress_plot, filename = ""../figures/anaVSaer/stress_norm.png"", device = ""png"", height = 4, width =6)"
+"0",""
+"0","write_csv(gathered_stress_atm, ""../results/StressNormCount_anaerobicVSaerobic.csv"")"

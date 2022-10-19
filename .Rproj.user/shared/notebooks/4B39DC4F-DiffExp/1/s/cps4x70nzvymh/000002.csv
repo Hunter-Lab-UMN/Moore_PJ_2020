@@ -1,0 +1,6 @@
+"0","```r
+# Check the coefficients for the comparison
+resultsNames(dds)
+```"
+"1","[1] \"Intercept\"             \"condition_fuso_vs_ana\"
+"

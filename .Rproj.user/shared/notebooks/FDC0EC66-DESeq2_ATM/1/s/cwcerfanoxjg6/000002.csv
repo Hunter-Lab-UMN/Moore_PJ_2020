@@ -1,0 +1,3 @@
+"0","## plot using GroupGeneCount function"
+"0","mucin_plot <- GroupGeneCountsBox(gathered_mucin_atm) + ggtitle(""Mucin Genes"")"
+"0","mucin_plot"

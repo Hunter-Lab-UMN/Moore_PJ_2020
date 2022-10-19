@@ -1,0 +1,5 @@
+"0","# Select the RNA counts slot to be the default assay"
+"0","DefaultAssay(seurat) <- ""RNA"""
+"0",""
+"0","# Normalize RNA data for visualization purposes"
+"0","seurat <- ScaleData(seurat, verbose = FALSE)"

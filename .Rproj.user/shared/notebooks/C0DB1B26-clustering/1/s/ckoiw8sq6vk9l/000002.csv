@@ -1,0 +1,13 @@
+"0","```r
+# Create function to get conserved markers for any given cluster
+get_conserved <- function(cluster){
+  FindConservedMarkers(seurat_integrated,
+                       ident.1 = cluster,
+                       grouping.var = \"condition\",
+                       only.pos = TRUE) %>%
+    rownames_to_column(var = \"gene\") %>%
+    left_join(y = unique(annotations[, c(\"gene_name\", \"description\")]),
+               by = c(\"gene\" = \"gene_name\")) %>%
+    cbind(cluster_id = cluster, .)
+  }
+```"

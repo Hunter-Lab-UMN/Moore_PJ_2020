@@ -1,0 +1,6 @@
+"0","# Plot the UMAP"
+"0","cluster <- DimPlot(seurat_integrated,"
+"0","        reduction = ""umap"","
+"0","        label = TRUE,"
+"0","        label.size = 6)"
+"0","cluster"

@@ -1,0 +1,3 @@
+"0","## Load in data"
+"0","data <- read.table(""../data/subread.txt"", header=T, row.names=1) "
+"0","meta <- read.table(""../data/metadata.txt"", header=T, row.names=1)"

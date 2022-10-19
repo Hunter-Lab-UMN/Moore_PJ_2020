@@ -1,0 +1,10 @@
+"0",""
+"0","maPlotATM_001_sa <- makeMA_001_two(resATM_df) + ggtitle(""Anaerobic vs Aerobic (ref)"") +theme("
+"0","    legend.text = element_text(size=rel(0.9)),  "
+"0","    legend.title = element_blank(),"
+"0","    legend.position = ""top"") +"
+"0","  guides(colour = guide_legend(override.aes = list(alpha=0.5, size=3))) +"
+"0","  scale_colour_manual(values = alpha(c(""#2b74e2"",""#df5f5b"", ""gray60""),0.5), labels = c(""Upregulated (117)"", ""Downregulated (31)"", ""NS""))"
+"2","Scale for 'colour' is already present. Adding another scale for 'colour', which will replace the existing scale.
+"
+"0","maPlotATM_001_sa"

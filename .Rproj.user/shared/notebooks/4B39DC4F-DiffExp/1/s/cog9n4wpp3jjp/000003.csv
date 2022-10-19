@@ -1,0 +1,6 @@
+"0","```r
+
+# Assign the rownames of the metadata to be the sample IDs
+rownames(cluster_metadata) <- cluster_metadata$sample
+cluster_metadata
+```"

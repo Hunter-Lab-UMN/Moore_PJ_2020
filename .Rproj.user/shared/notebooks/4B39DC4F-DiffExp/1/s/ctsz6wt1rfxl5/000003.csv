@@ -1,0 +1,8 @@
+"0","```r
+
+# Write all results to file
+write.csv(res_tbl,
+          paste0(\"../results/\", clusters[3], \"_all_genes.csv\"),
+          quote = FALSE, 
+          row.names = FALSE)
+```"
